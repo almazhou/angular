@@ -11,7 +11,16 @@ app.directive("superattribute",function() {
 	return {
 		restrict: "A",
 		link: function() {
-            alert("I'm working stronger")
+            alert("This is a attribute")
+        }
+	}
+});
+
+app.directive("superclass",function() {
+	return {
+		restrict: "C",
+		link: function() {
+            alert("This is a class")
         }
 	}
 });
