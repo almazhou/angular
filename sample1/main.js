@@ -24,3 +24,19 @@ app.directive("superclass",function() {
         }
 	}
 });
+
+app.directive("enter",function(){
+	return function(scope,element){
+		element.bind("mouseenter",function(){
+			alert("This is the mouseenter event");
+		})
+	}
+});
+
+app.directive("leave",function(){
+	return function(scope,element){
+		element.bind("mouseleave",function(){
+			alert("This is the mouseleave event");
+		})
+	}
+});
