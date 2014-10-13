@@ -40,3 +40,54 @@ app.directive("leave",function(){
 		})
 	}
 });
+
+app.directive("parentattribute",function(){
+	return {
+		restrict : "E",
+		scope : {},
+		controller: function($scope){
+			$scope.abilities = [];
+			this.addStrength = function(){
+				$scope.abilities.push("strength");
+			}
+			this.addSpeed = function(){
+				$scope.abilities.push("speed");
+			}
+			this.addFlight = function(){
+				$scope.abilities.push("flight");
+			}
+		},
+		link: function(scope, element){
+			element.bind("mouseenter",function(){
+				console.log(scope.abilities);
+			})
+		}
+	}
+});
+
+app.directive("strength",function(){
+	return {
+		require: "parentattribute",
+		link: function(scope,element,attrs,parentCtrl){
+			parentCtrl.addStrength();
+		}
+	}
+});
+
+app.directive("speed",function(){
+	return {
+		require: "parentattribute",
+		link: function(scope,element,attrs,parentCtrl){
+			parentCtrl.addSpeed();
+		}
+	}
+});
+
+app.directive("flight",function(){
+	return {
+		require: "parentattribute",
+		link: function(scope,element,attrs,parentCtrl){
+			parentCtrl.addFlight();
+		}
+	}
+});
